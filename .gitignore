@@ -1,0 +1,8 @@
+
+
+.env
+/env/
+/Auxiliary-Files
+/tools/__pycache__
+
+

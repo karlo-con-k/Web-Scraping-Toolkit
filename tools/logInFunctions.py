@@ -8,7 +8,7 @@ from .statBrowser import startDriver
 
 # driver = webdriver.Chrome()
 
-def logInOctafx(driver, user, password):
+def logInOctafx(driver, user: str, password: str):
     '''
         We need to be in https://my.octafx.com/ for log in, and we will need
         to enter to gmail and get the mail code
@@ -28,8 +28,14 @@ def logInOctafx(driver, user, password):
     logInGmail(gmailDriver, user, password)
     print("Enter to gmail successfully")
 
+    #* Get the html id of the fist mail
+    time.sleep(1)
+    mails    = gmailDriver.find_elements(By.XPATH, "//div/div/div/table/tbody/tr")
+    fistMail = mails[1]
+    tr_id = fistMail.get_attribute("id")
+
     #* Click in the  fist mail, and get the code in the mail title
-    gmailDriver.find_element(By.ID, ":1i").click()
+    gmailDriver.find_element(By.ID, tr_id).click()
     heder_mail = gmailDriver.find_element(By.CLASS_NAME, "hP")
     code = heder_mail.text[-4:]
     print("The mail code is ", code)
@@ -41,7 +47,7 @@ def logInOctafx(driver, user, password):
 
 
 
-def logInGmail(driver, user, password):
+def logInGmail(driver, user: str, password: str):
     '''
         We need to be in https://www.google.com/gmail/about/ for log in
     '''

@@ -8,12 +8,12 @@ from .statBrowser import startDriver
 
 # driver = webdriver.Chrome()
 
-def logInOctafx(driver, user: str, password: str):
+def logInOctafx(driver: webdriver, user: str, password: str):
     '''
         We need to be in https://my.octafx.com/ for log in, and we will need
         to enter to gmail and get the mail code
     '''
-
+    time.sleep(1)
     #* cin the user and the password, after click log in button
     input_user   = driver.find_element(By.CLASS_NAME, "poJmJ") 
     input_user.send_keys(user)
@@ -47,11 +47,11 @@ def logInOctafx(driver, user: str, password: str):
 
 
 
-def logInGmail(driver, user: str, password: str):
+def logInGmail(driver: webdriver, user: str, password: str):
     '''
         We need to be in https://www.google.com/gmail/about/ for log in
     '''
-
+    time.sleep(1)
     #* click in Sign on the top page.
     driver.find_element(By.LINK_TEXT, "Sign in").click() 
 

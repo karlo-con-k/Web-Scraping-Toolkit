@@ -51,11 +51,12 @@ def getDataOCtafx(driver, time_between_gets = 5, sizeTimeSerie = 10):
     return timeSerie
 
 
-def getDataOCtafx_and_save_in_CSV(driver, time_between_gets = 5, sizeTimeSerie = 10):
+def saveDataOCtafx_in_CSV(driver, time_between_gets = 5, sizeTimeSerie = 10):
     '''
-        Get the value of the BTCUSD every time_between_gets, and save in a vector with the current time.
+        Get the value of the BTCUSD every time_between_gets, and save in a CSV timePriceOf_BTCUSA.csv  with the current time.
             We need to be in https://my.octafx.com/octatrader/
     '''
+
     #* To ensure that we are where we need to be
     driver.refresh() 
     time.sleep(5)
